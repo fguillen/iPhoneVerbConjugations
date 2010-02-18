@@ -97,6 +97,22 @@
 	return title;
 }
 
+- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section{
+	NSString *title;
+	switch (section) {
+		case 0:
+			title = @"Select the order system that the History list will use to show the cached verbs.";
+			break;
+		case 1:
+			title = @"Delete all the cached verbs on the History list, the verbs will be cached again as you are asking for them.";
+			break;
+		default:
+			break;
+	}
+	
+	return title;
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 	NSLog( @"[ConfigurationController tableView:%@ didSelectRowAtIndexPath:%@]", tableView, indexPath );
 	
@@ -105,8 +121,6 @@
 		switch ( indexPath.row ) {
 			case 0:
 				[appDelegate selectHistoryOrderBy:HISTORY_ORDER_BY_DATE];
-				
-
 				break;
 			case 1:
 				[appDelegate selectHistoryOrderBy:HISTORY_ORDER_BY_ALPHABETICALLY];
@@ -141,15 +155,6 @@
 	[tView reloadData];
 }
 
-/*
- // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
-        // Custom initialization
-    }
-    return self;
-}
-*/
 
 - (void)viewDidLoad {
 	[deleteButton setBackgroundImage:[[UIImage imageNamed:@"redButton.png"] stretchableImageWithLeftCapWidth:10.0 topCapHeight:0.0] forState:UIControlStateNormal];
@@ -165,25 +170,10 @@
 }
 
 
-/*
-// Override to allow orientations other than the default portrait orientation.
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-*/
 
 - (void)didReceiveMemoryWarning {
 	NSLog(@"[ConfigurationController didReceiveMemoryWarning]");
-    [super didReceiveMemoryWarning];
-	
-	// Release any cached data, images, etc that aren't in use.
-}
-
-- (void)viewDidUnload {
-	// Release any retained subviews of the main view.
-	// e.g. self.myOutlet = nil;
-}
+    [super didReceiveMemoryWarning];}
 
 
 - (void)dealloc {

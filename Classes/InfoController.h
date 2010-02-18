@@ -9,8 +9,10 @@
 #import <UIKit/UIKit.h>
 
 
-@interface InfoController : UIViewController {
-
+@interface InfoController : UIViewController <UIWebViewDelegate> {
+	IBOutlet UIWebView *webView;
 }
+
+- (void)chargeWebView:(UIWebView *)theWebView fromBundleFileName:(NSString *)fileName;
 
 @end

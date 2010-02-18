@@ -9,12 +9,9 @@
 #import "DBManager.h"
 #import "Verb.h"
 #import "Constants.h"
+#import "JSON.h"
 
 @implementation DBManager
-
-+ (Verb *)search:(NSString *)verbName{
-  	return [Verb alloc];
-}
 
 + (void) copyDatabaseIfNeeded {
 	NSLog( @"[DBManager copyDatabaseIfNeeded]" );
@@ -35,8 +32,7 @@
 	}
 }
 
-+ (NSString *) getDBPath {
-	
++ (NSString *) getDBPath {	
 	//Search for standard documents using NSSearchPathForDirectoriesInDomains
 	//First Param = Searching the documents directory
 	//Second Param = Searching the Users directory and not the System
@@ -47,11 +43,12 @@
 }
 
 + (Verb *) getVerbByName:(NSString *)verbName {
-	NSLog( @"[DBManager getVerbByName:%@", verbName );
+	NSLog( @"[DBManager getVerbByName:%@]", verbName );
 	
 	sqlite3 *db;
 	
-	Verb *verb = nil;
+	Verb *newVerb = [[Verb alloc] init];
+	BOOL found = NO;
 	
 	if (sqlite3_open([[DBManager getDBPath] UTF8String], &db) == SQLITE_OK) {
 		NSString *sql = [NSString stringWithFormat:@"select verb_structure from verbs where verb_name = '%@'", verbName];
@@ -60,19 +57,14 @@
 		sqlite3_stmt *selectstmt;
 		if(sqlite3_prepare_v2(db, [sql cStringUsingEncoding:NSUTF8StringEncoding], -1, &selectstmt, NULL) == SQLITE_OK) {			
 			if(sqlite3_step(selectstmt) == SQLITE_ROW) {
-				verb = [[Verb alloc] retain];
-				verb.name = verbName;
-				verb.tenses = [[NSMutableDictionary dictionary] retain];
+				found = YES;
 				
-				NSLog( @"verb_structure: %@",[NSString stringWithUTF8String:(char *)sqlite3_column_text(selectstmt, 0)] );
+				newVerb.name = verbName;
 				
-				NSString *structure = [NSString stringWithUTF8String:(char *)sqlite3_column_text(selectstmt, 0)];
-				NSArray *tenseStrutures = [structure componentsSeparatedByString:@"|"];
-				for(int n=0; n<[tenseStrutures count]; n++){
-					NSString *tenseName = [[[tenseStrutures objectAtIndex:n] componentsSeparatedByString:@":"] objectAtIndex:0];
-					NSString *conjugationStructure = [[[tenseStrutures objectAtIndex:n] componentsSeparatedByString:@":"] objectAtIndex:1];
-					[verb.tenses setValue:[conjugationStructure componentsSeparatedByString:@","] forKey:tenseName];
-				}
+				NSString *tensesJson = [NSString stringWithUTF8String:(char *)sqlite3_column_text(selectstmt, 0)];
+				SBJSON *json = [SBJSON new];
+				newVerb.tenses = [json objectWithString:tensesJson error:NULL];
+				[json release];
 			}
 		}
 		sqlite3_finalize(selectstmt);
@@ -84,7 +76,16 @@
 		NSLog( @"[DBManager getVerbByName] -> ERROR: closing db" );
 	}
 	
-	return verb;
+	
+	NSLog( @"[DBManager getVerbByName:%@] - going out", verbName );
+
+	[newVerb autorelease];
+	
+	if( found ) {
+		return newVerb;
+	} else {
+		return nil;
+	}	
 }
 
 + (void) saveVerb:(Verb *) verb{
@@ -95,7 +96,7 @@
 	sqlite3 *db;
 	
 	if (sqlite3_open([[DBManager getDBPath] UTF8String], &db) == SQLITE_OK) {
-		NSString *sql = [NSString stringWithFormat:@"insert into verbs (verb_name, verb_structure) values ('%@', '%@');", verb.name, [verb verbStructureToJSON]];
+		NSString *sql = [NSString stringWithFormat:@"insert into verbs (verb_name, verb_structure) values ('%@', '%@');", verb.name, [verb verbStructureToJson]];
 		NSLog(@"sql:%@", sql);
 		rc = sqlite3_exec(db, [sql cStringUsingEncoding:NSUTF8StringEncoding], 0, 0, &zErrMsg);
 		if(  rc != SQLITE_OK ){

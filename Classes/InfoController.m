@@ -11,22 +11,21 @@
 
 @implementation InfoController
 
-/*
- // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
-        // Custom initialization
-    }
-    return self;
-}
-*/
-
-/*
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
+	[self chargeWebView:webView fromBundleFileName:@"info2.html"];
+	webView.delegate = self;
     [super viewDidLoad];
 }
-*/
+
+- (void)chargeWebView:(UIWebView *)theWebView fromBundleFileName:(NSString *)fileName{
+	NSString *filePath =[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:fileName];
+	NSData *htmlData = [NSData dataWithContentsOfFile:filePath];
+	if (htmlData) {
+		NSString *path = [[NSBundle mainBundle] bundlePath];
+		NSURL *baseURL = [NSURL fileURLWithPath:path];
+		[theWebView loadData:htmlData MIMEType:@"text/html" textEncodingName:@"UTF-8" baseURL:baseURL];
+	}	
+}
 
 - (void)viewDidAppear:(BOOL)animated {
 	NSLog(@"[InfoController viewDidAppear:%d]", animated);
@@ -34,29 +33,24 @@
 }
 
 
-/*
-// Override to allow orientations other than the default portrait orientation.
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-*/
-
 - (void)didReceiveMemoryWarning {
 	NSLog(@"[InfoController didReceiveMemoryWarning]");
     [super didReceiveMemoryWarning];
-	
-	// Release any cached data, images, etc that aren't in use.
-}
-
-- (void)viewDidUnload {
-	// Release any retained subviews of the main view.
-	// e.g. self.myOutlet = nil;
 }
 
 
 - (void)dealloc {
     [super dealloc];
+}
+
+#pragma mark UIWebViewDelegate
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
+	NSLog( @"[InfoController webView: shouldStartLoadWithRequest:%@]", request );
+    if (navigationType == UIWebViewNavigationTypeLinkClicked) {
+        [[UIApplication sharedApplication] openURL:request.URL];
+        return NO;
+    }
+	return YES;
 }
 
 

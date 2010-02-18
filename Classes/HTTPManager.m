@@ -43,27 +43,11 @@ static NSURLConnection *connection = nil;
 		[(VerbConjugationsAppDelegate *)[[UIApplication sharedApplication] delegate] showConnectionError:@"You must be connected to Internet to access to the server"];
 		return;
 	}
-	
-	
-//	NSLog( @"[HTTPManager getVerbByName] - connection retainCount:%d", [connection retainCount] );
-//	if( [connection retainCount] != 0 ){
-//		NSLog( @"[HTTPManager getVerbByName] - connection releasing" );
-//		[connection release];
-//		NSLog( @"[HTTPManager getVerbByName] - connection released" );
-//	}
-	
+
 	NSString *url = [NSString stringWithFormat:@"http://vc.fernandoguillen.info/%@.json", verbName];
 	NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url] cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:20];
 	
-	NSLog( @"[HTTPManager getVerbByName] - [request timeoutInterval]:%@", [request timeoutInterval] );
-	
-//	NSURLResponse *response;
-//	NSError *error;
-	
-//	NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-//	NSString *responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
-	
-	HTTPManager *delegate = [HTTPManager alloc];
+	HTTPManager *delegate = [[HTTPManager alloc] init];
 	
 	delegate.verbName = verbName;
 	delegate.receivedData = [[NSMutableData alloc] initWithLength:0];
@@ -71,14 +55,12 @@ static NSURLConnection *connection = nil;
 	
 	connection = [[NSURLConnection alloc] initWithRequest:request delegate:delegate startImmediately:YES];
 	
-	NSLog( @"[HTTPManager getVerbByName] - [request timeoutInterval]:%@", [request timeoutInterval] );
-	
-	NSLog( @"[HTTPManager getVerbByName] - connection:%@", connection );
-	
 	if (connection == nil) {
 		NSLog( @"[HTTPManager getVerbByName] ERROR opening connection" );
 		[(VerbConjugationsAppDelegate *)[[UIApplication sharedApplication] delegate] showConnectionError:@"Error opening connection"];
 	}
+	
+	[delegate release];
 }
 
 + (void)cancelLoading{
@@ -123,17 +105,8 @@ static NSURLConnection *connection = nil;
 	NSLog(@"[HTTPManager getVerbByName] connectionDidFinishLoading:"); 
 	
 	NSString *responseString = [[NSString alloc] initWithData:self.receivedData encoding:NSUTF8StringEncoding];
-	
-	Verb *verb = [[Verb alloc] retain];
-	verb.name = self.verbName;
-	verb.tenses = [[NSMutableDictionary dictionary] retain];
-	NSArray *tenseStrutures = [responseString componentsSeparatedByString:@"|"];
-	for(int n=0; n<[tenseStrutures count]; n++){
-		NSString *tenseName = [[[tenseStrutures objectAtIndex:n] componentsSeparatedByString:@":"] objectAtIndex:0];
-		NSString *conjugationStructure = [[[tenseStrutures objectAtIndex:n] componentsSeparatedByString:@":"] objectAtIndex:1];
-		[verb.tenses setValue:[conjugationStructure componentsSeparatedByString:@","] forKey:tenseName];
-	}
-	
+	Verb *verb = [Verb initWithJson:responseString];
+	[responseString release];
 	
 	NSLog( @"[HTTPManager connectionDidFinishLoading] Verb.name:%@", verb.name );
 

@@ -11,13 +11,15 @@
 
 @interface Verb : NSObject {
 	NSString *name;
-	NSMutableDictionary *tenses;
+	NSArray *tenses;
 }
 
 @property (nonatomic, retain) NSString *name;
-@property (nonatomic, retain) NSMutableDictionary *tenses;
+@property (nonatomic, retain) NSArray *tenses;
 
 + (Verb *) initWithJson:(NSString *)jsonString;
-- (NSString *) verbStructureToJSON;
+- (NSString *) verbStructureToJson;
+- (NSArray *) tensesNames;
+- (NSArray *) conjugationForTenseName:(NSString *)tenseName;
 
 @end

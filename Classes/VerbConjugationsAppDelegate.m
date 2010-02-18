@@ -40,17 +40,11 @@
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {    
     NSLog( @"applicationDidFinishLaunching" );
-	
+
 	[self defaultConfiguration];
-	
-//	NSLog( @"[VerbConjugationsAppDelegate applicationDidFinishLaunching] -> userDefaults HistoryOrderBy:%@", [[NSUserDefaults standardUserDefaults] stringForKey:HISTORY_ORDER_KEY] );
-//	NSLog( @"[VerbConjugationsAppDelegate applicationDidFinishLaunching] -> userDefaults HistoryOrderKey:%@", HISTORY_ORDER_KEY );
-//	NSLog( @"HISTORY_ORDER_BY_DATE:%@", HISTORY_ORDER_BY_DATE );
 
 	verbsNavController.viewControllers = [NSArray arrayWithObject:searchsController];
-	
     [window addSubview:tabController.view];
-//    [window addSubview:loadingController.view];
     [window makeKeyAndVisible];
 }
 
@@ -62,20 +56,18 @@
 }
 
 - (void)search:(NSString *)verbName {
-	NSLog(@"VerbConjugationsAppDelegate.search: %d", verbName);
+	NSLog(@"VerbConjugationsAppDelegate.search: %@", verbName);
 
-	[self.verb release];
+	NSLog( @"[VerbConjugationsAppDelegate.search:] - asking to DBManager" );
 	self.verb = [DBManager getVerbByName:verbName];
+	NSLog( @"[VerbConjugationsAppDelegate.search:] - continuing" );
 	
 	if( self.verb == nil ){
 		[tabController presentModalViewController:loadingController animated:YES];
-		[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
-		
-		
-		
+		[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];		
 		[HTTPManager getVerbByName:verbName appDelegate:self];
 	} else {
-		tensesController.values = [self.verb.tenses allKeys];
+		tensesController.values = [self.verb tensesNames];
 		verbsNavController.viewControllers = [NSArray arrayWithObject:searchsController];
 		[verbsNavController pushViewController:tensesController animated:YES];
 		tabController.selectedIndex = 0;
@@ -88,10 +80,12 @@
 	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 	[tabController dismissModalViewControllerAnimated:YES];
 	
+	[self.verb release];
 	self.verb = newVerb;
+	
 	[DBManager saveVerb:self.verb];
 	[historyController reloadData];
-	tensesController.values = [self.verb.tenses allKeys];
+	tensesController.values = [self.verb tensesNames];
 	verbsNavController.viewControllers = [NSArray arrayWithObject:searchsController];
 	[verbsNavController pushViewController:tensesController animated:YES];
 	tabController.selectedIndex = 0;
@@ -99,7 +93,7 @@
 
 - (void)tenseClicked:(NSString *)tenseName {
 	NSLog( @"VerbConjugationsAppDelegate.tenseClicked: %d", tenseName );
-	[conjugationsController setValues:[self.verb.tenses objectForKey:tenseName]];
+	[conjugationsController setValues:[self.verb conjugationForTenseName:tenseName]];
 	[verbsNavController pushViewController:conjugationsController animated:YES];
 }
 
@@ -107,7 +101,6 @@
 	NSLog( @"[VerbConjugationsAppDelegate selectHistoryOrderBy:%@]", orderByKey );
 	[[NSUserDefaults standardUserDefaults] setObject:orderByKey forKey:HISTORY_ORDER_KEY];
 	[historyController reloadData];
-	
 }
 
 
@@ -143,16 +136,14 @@
 		NSLog( @"[VerbConjugationsAppDelegate deleteHistory], history deleted" );
 		historyController.reloadData;
 	}
-	
-
 }
 
-
-
+#pragma mark dealloc
 
 - (void)dealloc {
 	NSLog( @"dealloc" );
     [conjugationsController release];
+	[verb release];
     [window release];
     [super dealloc];
 }
