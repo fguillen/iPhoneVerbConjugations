@@ -20,10 +20,9 @@
 	return YES;
 }
 
-
-
 - (void)viewDidLoad {
 	NSLog( @"viewDidLoad:" );
+	[[self navigationController] setNavigationBarHidden:YES animated:NO];
     [super viewDidLoad];
 }
 
@@ -32,10 +31,22 @@
 	[super viewDidAppear:animated];
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+	NSLog(@"[SearchsController viewWillAppear:%d]", animated);
+	[[self navigationController] setNavigationBarHidden:YES animated:YES];
+	[super viewWillAppear:animated];
+}
+
 
 - (void)didReceiveMemoryWarning {
 	NSLog(@"[SearchsController didReceiveMemoryWarning]");
     [super didReceiveMemoryWarning];
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+	if( textSearch.editing ) {
+		[textSearch resignFirstResponder];
+	}
 }
 
 

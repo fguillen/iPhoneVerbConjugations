@@ -38,8 +38,8 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<object class="IBUIImageView" id="512735627">
 						<reference key="NSNextResponder" ref="191373211"/>
-						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{0, -55}, {320, 460}}</string>
+						<int key="NSvFlags">274</int>
+						<string key="NSFrame">{{0, 15}, {320, 460}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIAutoresizesSubviews">NO</bool>
@@ -83,6 +83,7 @@
 						<float key="IBUIMinimumFontSize">1.700000e+01</float>
 						<object class="IBUITextInputTraits" key="IBUITextInputTraits">
 							<int key="IBUIReturnKeyType">6</int>
+							<bool key="IBUIEnablesReturnKeyAutomatically">YES</bool>
 						</object>
 						<int key="IBUIClearButtonMode">1</int>
 					</object>
@@ -157,13 +158,13 @@
 						<reference key="parent" ref="302574638"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">4</int>
-						<reference key="object" ref="183109741"/>
+						<int key="objectID">12</int>
+						<reference key="object" ref="512735627"/>
 						<reference key="parent" ref="191373211"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">12</int>
-						<reference key="object" ref="512735627"/>
+						<int key="objectID">4</int>
+						<reference key="object" ref="183109741"/>
 						<reference key="parent" ref="191373211"/>
 					</object>
 				</object>
@@ -183,7 +184,7 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>SearchsController</string>
 					<string>UIResponder</string>
-					<string>{{495, 144}, {320, 480}}</string>
+					<string>{{574, 161}, {320, 480}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>

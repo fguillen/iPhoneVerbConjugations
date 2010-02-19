@@ -43,6 +43,11 @@
 	[super viewDidAppear:animated];
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+	NSLog(@"[ConjugationsController viewWillAppear:%d]", animated);
+	[[self navigationController] setNavigationBarHidden:NO animated:YES];
+	[super viewWillAppear:animated];
+}
 
 - (void)didReceiveMemoryWarning {
 	NSLog(@"[ConjugationsController didReceiveMemoryWarning]");

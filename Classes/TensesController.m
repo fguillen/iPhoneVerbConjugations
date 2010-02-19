@@ -64,6 +64,11 @@
     [super didReceiveMemoryWarning];
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+	NSLog(@"[TensesController viewWillAppear:%d]", animated);
+	[[self navigationController] setNavigationBarHidden:NO animated:YES];
+	[super viewWillAppear:animated];
+}
 
 - (void)dealloc {
 	[values release];

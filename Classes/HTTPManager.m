@@ -99,19 +99,23 @@ static NSURLConnection *connection = nil;
 }
 
 
-
-
 - (void) connectionDidFinishLoading:(NSURLConnection *)connection {
 	NSLog(@"[HTTPManager getVerbByName] connectionDidFinishLoading:"); 
 	
 	NSString *responseString = [[NSString alloc] initWithData:self.receivedData encoding:NSUTF8StringEncoding];
-	Verb *verb = [Verb initWithJson:responseString];
+	NSLog( @"[HTTPManager connectionDidFinishLoading:] - responseString:%@", responseString );
+	
+	if( [responseString hasPrefix:@"ERROR"] ){
+		NSLog( @"[HTTPManager connectionDidFinishLoading:] - error request" );
+		[appDelegate searchFinishedWithError];
+	} else {
+		Verb *verb = [Verb initWithJson:responseString];  
+		NSLog( @"[HTTPManager connectionDidFinishLoading] Verb.name:%@", verb.name );
+		[appDelegate searchFinished:verb];
+	}
+	   
 	[responseString release];
-	
-	NSLog( @"[HTTPManager connectionDidFinishLoading] Verb.name:%@", verb.name );
 
-	[appDelegate searchFinished:verb];
-	
 	[connection release];
 }
 

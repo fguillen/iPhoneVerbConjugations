@@ -44,6 +44,7 @@
 - (void)selectHistoryOrderBy:(NSString *)orderByKey;
 - (void)cancelLoading;
 - (void)showConnectionError:(NSString *)error;
+- (void)searchFinishedWithError;
 
 
 @end

@@ -12,7 +12,7 @@
 @implementation InfoController
 
 - (void)viewDidLoad {
-	[self chargeWebView:webView fromBundleFileName:@"info2.html"];
+	[self chargeWebView:webView fromBundleFileName:@"info.html"];
 	webView.delegate = self;
     [super viewDidLoad];
 }

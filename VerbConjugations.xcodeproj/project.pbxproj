@@ -42,6 +42,7 @@
 		5E572113112DDC4A00A55062 /* info.html in Resources */ = {isa = PBXBuildFile; fileRef = 5E572110112DDC4A00A55062 /* info.html */; };
 		5E572114112DDC4A00A55062 /* schema.sql in Resources */ = {isa = PBXBuildFile; fileRef = 5E572111112DDC4A00A55062 /* schema.sql */; };
 		5E572115112DDC4A00A55062 /* verbs.sqlite3.db in Resources */ = {isa = PBXBuildFile; fileRef = 5E572112112DDC4A00A55062 /* verbs.sqlite3.db */; };
+		5E572130112DE09700A55062 /* loading_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E57212F112DE09700A55062 /* loading_background.png */; };
 		5E6943AB1121E871000EA39C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E6943AA1121E871000EA39C /* SystemConfiguration.framework */; };
 		5E6A330E1104797900BB0C66 /* TensesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E6A330D1104797900BB0C66 /* TensesController.m */; };
 		5E6A33101104798C00BB0C66 /* TenseView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E6A330F1104798C00BB0C66 /* TenseView.xib */; };
@@ -108,6 +109,7 @@
 		5E572110112DDC4A00A55062 /* info.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = info.html; path = Resources/info.html; sourceTree = "<group>"; };
 		5E572111112DDC4A00A55062 /* schema.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = schema.sql; path = Resources/schema.sql; sourceTree = "<group>"; };
 		5E572112112DDC4A00A55062 /* verbs.sqlite3.db */ = {isa = PBXFileReference; lastKnownFileType = file; name = verbs.sqlite3.db; path = Resources/verbs.sqlite3.db; sourceTree = "<group>"; };
+		5E57212F112DE09700A55062 /* loading_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = loading_background.png; path = Resources/Graphics/loading_background.png; sourceTree = "<group>"; };
 		5E6943AA1121E871000EA39C /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		5E6A330C1104797900BB0C66 /* TensesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TensesController.h; sourceTree = "<group>"; };
 		5E6A330D1104797900BB0C66 /* TensesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TensesController.m; sourceTree = "<group>"; };
@@ -248,6 +250,7 @@
 		5E5720EE112DD4DF00A55062 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				5E57212F112DE09700A55062 /* loading_background.png */,
 				5E572103112DD97100A55062 /* 06-magnifying-glass.png */,
 				5E572104112DD97100A55062 /* 19-gear.png */,
 				5E572105112DD97100A55062 /* 23-bird.png */,
@@ -342,6 +345,7 @@
 				5E572113112DDC4A00A55062 /* info.html in Resources */,
 				5E572114112DDC4A00A55062 /* schema.sql in Resources */,
 				5E572115112DDC4A00A55062 /* verbs.sqlite3.db in Resources */,
+				5E572130112DE09700A55062 /* loading_background.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

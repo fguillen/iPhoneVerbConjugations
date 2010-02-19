@@ -44,6 +44,7 @@
 	[self defaultConfiguration];
 
 	verbsNavController.viewControllers = [NSArray arrayWithObject:searchsController];
+	
     [window addSubview:tabController.view];
     [window makeKeyAndVisible];
 }
@@ -89,6 +90,15 @@
 	verbsNavController.viewControllers = [NSArray arrayWithObject:searchsController];
 	[verbsNavController pushViewController:tensesController animated:YES];
 	tabController.selectedIndex = 0;
+}
+
+- (void) searchFinishedWithError{
+	NSLog( @"VerbConjugationsAppDelegate searchFinishedWithError]" );
+	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+	[tabController dismissModalViewControllerAnimated:YES];
+	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Verb Not Found" message:@"Please, check the verb you have entered, it has to be an infinitive Spanish Verb" delegate:self cancelButtonTitle:@"Ok!" otherButtonTitles:nil];
+	[alert show];
+	[alert release];
 }
 
 - (void)tenseClicked:(NSString *)tenseName {
