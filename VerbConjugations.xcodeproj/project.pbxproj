@@ -27,6 +27,7 @@
 		5E0EE0631108BF5800BEC682 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E0EE0621108BF5700BEC682 /* libsqlite3.0.dylib */; };
 		5E0EE1AD1108EB2B00BEC682 /* HTTPManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E0EE1AC1108EB2B00BEC682 /* HTTPManager.m */; };
 		5E3D3B0911340878002ABC56 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 5E3D3B0811340878002ABC56 /* iTunesArtwork */; };
+		5E3D3B2411340AE5002ABC56 /* ConjugationsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E3D3B2311340AE5002ABC56 /* ConjugationsView.xib */; };
 		5E571ED0112D4AB600A55062 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E571EC5112D4AB600A55062 /* NSObject+SBJSON.m */; };
 		5E571ED1112D4AB600A55062 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E571EC7112D4AB600A55062 /* NSString+SBJSON.m */; };
 		5E571ED2112D4AB600A55062 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E571EC9112D4AB600A55062 /* SBJSON.m */; };
@@ -88,6 +89,7 @@
 		5E0EE1AB1108EB2B00BEC682 /* HTTPManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPManager.h; sourceTree = "<group>"; };
 		5E0EE1AC1108EB2B00BEC682 /* HTTPManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPManager.m; sourceTree = "<group>"; };
 		5E3D3B0811340878002ABC56 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = "<group>"; };
+		5E3D3B2311340AE5002ABC56 /* ConjugationsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ConjugationsView.xib; path = Resources/Nibs/ConjugationsView.xib; sourceTree = "<group>"; };
 		5E571EC3112D4AB600A55062 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
 		5E571EC4112D4AB600A55062 /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
 		5E571EC5112D4AB600A55062 /* NSObject+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJSON.m"; sourceTree = "<group>"; };
@@ -280,6 +282,7 @@
 				5E0EDC9D1105C72900BEC682 /* SearchView.xib */,
 				5E6A330F1104798C00BB0C66 /* TenseView.xib */,
 				5E9CE45F11149B08008DE8ED /* LoadingView.xib */,
+				5E3D3B2311340AE5002ABC56 /* ConjugationsView.xib */,
 			);
 			name = Nibs;
 			sourceTree = "<group>";
@@ -350,6 +353,7 @@
 				5E572115112DDC4A00A55062 /* verbs.sqlite3.db in Resources */,
 				5E572130112DE09700A55062 /* loading_background.png in Resources */,
 				5E3D3B0911340878002ABC56 /* iTunesArtwork in Resources */,
+				5E3D3B2411340AE5002ABC56 /* ConjugationsView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
