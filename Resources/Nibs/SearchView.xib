@@ -48,13 +48,13 @@
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<object class="NSCustomResource" key="IBUIImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">search_background.png</string>
+							<string key="NSResourceName">iPhoneVerbsConjugation_background_final.png</string>
 						</object>
 					</object>
 					<object class="IBUITextField" id="183109741">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{63, 110}, {192, 31}}</string>
+						<string key="NSFrame">{{64, 48}, {192, 31}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">1</int>
@@ -141,8 +141,8 @@
 						<reference key="object" ref="191373211"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="183109741"/>
 							<reference ref="512735627"/>
+							<reference ref="183109741"/>
 						</object>
 						<reference key="parent" ref="302574638"/>
 					</object>

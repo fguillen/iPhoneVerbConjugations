@@ -45,7 +45,9 @@ static NSURLConnection *connection = nil;
 	}
 
 	NSString *url = [NSString stringWithFormat:@"http://vc.fernandoguillen.info/%@.json", verbName];
-	NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url] cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:20];
+	NSString *url_scaped = [[[url lowercaseString] stringByReplacingOccurrencesOfString:@" " withString:@"%20"] stringByReplacingOccurrencesOfString:@"ñ" withString:@"%164"];
+	
+	NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url_scaped] cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:20];
 	
 	HTTPManager *delegate = [[HTTPManager alloc] init];
 	

@@ -50,13 +50,13 @@
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<object class="NSCustomResource" key="IBUIImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">loading_background.png</string>
+							<string key="NSResourceName">iPhoneVerbsConjugation_loading_final.png</string>
 						</object>
 					</object>
 					<object class="IBUIActivityIndicatorView" id="706365328">
 						<reference key="NSNextResponder" ref="358381087"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{150, 220}, {20, 20}}</string>
+						<string key="NSFrame">{{150, 112}, {20, 20}}</string>
 						<reference key="NSSuperview" ref="358381087"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
@@ -68,7 +68,7 @@
 					<object class="IBUILabel" id="52436119">
 						<reference key="NSNextResponder" ref="358381087"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{62, 89}, {195, 30}}</string>
+						<string key="NSFrame">{{62, 56}, {195, 30}}</string>
 						<reference key="NSSuperview" ref="358381087"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -86,7 +86,7 @@
 					<object class="IBUILabel" id="140338128">
 						<reference key="NSNextResponder" ref="358381087"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{62, 107}, {195, 30}}</string>
+						<string key="NSFrame">{{62, 74}, {195, 30}}</string>
 						<reference key="NSSuperview" ref="358381087"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -187,11 +187,11 @@
 						<reference key="object" ref="358381087"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="706365328"/>
-							<reference ref="52436119"/>
-							<reference ref="140338128"/>
 							<reference ref="382324523"/>
 							<reference ref="789186089"/>
+							<reference ref="52436119"/>
+							<reference ref="140338128"/>
+							<reference ref="706365328"/>
 						</object>
 						<reference key="parent" ref="241233399"/>
 					</object>

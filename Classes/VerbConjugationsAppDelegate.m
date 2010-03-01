@@ -142,7 +142,7 @@
 		[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 		[tabController dismissModalViewControllerAnimated:YES];
 	} else if( buttonIndex == 1 ){
-		DBManager.deleteHistory;
+		[DBManager deleteHistory];
 		NSLog( @"[VerbConjugationsAppDelegate deleteHistory], history deleted" );
 		historyController.reloadData;
 	}
