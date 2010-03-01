@@ -49,7 +49,7 @@
 		5E6943AB1121E871000EA39C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E6943AA1121E871000EA39C /* SystemConfiguration.framework */; };
 		5E6A330E1104797900BB0C66 /* TensesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E6A330D1104797900BB0C66 /* TensesController.m */; };
 		5E6A33101104798C00BB0C66 /* TenseView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E6A330F1104798C00BB0C66 /* TenseView.xib */; };
-		5E988351113BC31C005E0C54 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E988350113BC31C005E0C54 /* Icon.png */; };
+		5E988351113BC31C005E0C54 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E988350113BC31C005E0C54 /* icon.png */; };
 		5E988354113BC340005E0C54 /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E988353113BC340005E0C54 /* Icon-Small.png */; };
 		5E988356113BC35F005E0C54 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 5E988355113BC35F005E0C54 /* iTunesArtwork */; };
 		5E9CE46011149B08008DE8ED /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E9CE45F11149B08008DE8ED /* LoadingView.xib */; };
@@ -120,7 +120,7 @@
 		5E6A330C1104797900BB0C66 /* TensesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TensesController.h; sourceTree = "<group>"; };
 		5E6A330D1104797900BB0C66 /* TensesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TensesController.m; sourceTree = "<group>"; };
 		5E6A330F1104798C00BB0C66 /* TenseView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = TenseView.xib; path = Resources/Nibs/TenseView.xib; sourceTree = "<group>"; };
-		5E988350113BC31C005E0C54 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = Resources/Graphics/Icon.png; sourceTree = "<group>"; };
+		5E988350113BC31C005E0C54 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = Resources/Graphics/icon.png; sourceTree = "<group>"; };
 		5E988353113BC340005E0C54 /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small.png"; path = "Resources/Graphics/Icon-Small.png"; sourceTree = "<group>"; };
 		5E988355113BC35F005E0C54 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; name = iTunesArtwork; path = Resources/Graphics/iTunesArtwork; sourceTree = "<group>"; };
 		5E9CE45F11149B08008DE8ED /* LoadingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = LoadingView.xib; path = Resources/Nibs/LoadingView.xib; sourceTree = "<group>"; };
@@ -258,7 +258,7 @@
 			children = (
 				5E988355113BC35F005E0C54 /* iTunesArtwork */,
 				5E988353113BC340005E0C54 /* Icon-Small.png */,
-				5E988350113BC31C005E0C54 /* Icon.png */,
+				5E988350113BC31C005E0C54 /* icon.png */,
 				5E3B46E1113AF820005B07BB /* iPhoneVerbsConjugation_background_final.png */,
 				5E3B46D4113AF51F005B07BB /* Default.png */,
 				5E3B46D6113AF51F005B07BB /* iPhoneVerbsConjugation_loading_final.png */,
@@ -355,7 +355,7 @@
 				5E3B46D7113AF51F005B07BB /* Default.png in Resources */,
 				5E3B46D9113AF51F005B07BB /* iPhoneVerbsConjugation_loading_final.png in Resources */,
 				5E3B46E2113AF820005B07BB /* iPhoneVerbsConjugation_background_final.png in Resources */,
-				5E988351113BC31C005E0C54 /* Icon.png in Resources */,
+				5E988351113BC31C005E0C54 /* icon.png in Resources */,
 				5E988354113BC340005E0C54 /* Icon-Small.png in Resources */,
 				5E988356113BC35F005E0C54 /* iTunesArtwork in Resources */,
 			);
@@ -426,12 +426,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Fernando Guillen Suarez";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "1934C9AE-B32C-4900-A412-BF98DC2B4EC1";
 				SDKROOT = iphoneos3.0;
 			};
 			name = Distribution;
@@ -454,12 +454,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Fernando Guillen Suarez (MB7367G948)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "595C9425-7FEF-4737-AB9B-BFD630551EE6";
 				SDKROOT = iphoneos3.0;
 			};
 			name = Debug;
@@ -468,12 +468,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Fernando Guillen Suarez (MB7367G948)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "595C9425-7FEF-4737-AB9B-BFD630551EE6";
 				SDKROOT = iphoneos3.0;
 			};
 			name = Release;
